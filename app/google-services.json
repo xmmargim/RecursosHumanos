@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "913160637368",
+    "project_id": "recursoshumanos-a99bd",
+    "storage_bucket": "recursoshumanos-a99bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913160637368:android:2afd4188e9cf120d061d4d",
+        "android_client_info": {
+          "package_name": "com.example.recursoshumanos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913160637368-h6bntnhnl3habiahh7c30tuqkfnps799.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDypbX_f4wi8T82le28B7ko-36KiHqeqDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913160637368-h6bntnhnl3habiahh7c30tuqkfnps799.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
