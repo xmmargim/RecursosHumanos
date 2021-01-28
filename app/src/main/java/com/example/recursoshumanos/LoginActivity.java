@@ -51,11 +51,10 @@ public class LoginActivity extends AppCompatActivity {
 
         //SharedPreferences
         Context context = LoginActivity.this;
-        SharedPreferences sharedPref = context.getSharedPreferences( "Email", Context.MODE_PRIVATE);
-        Log.d("Email", sharedPref.getString("Email", "null"));
+        SharedPreferences sharedPref = context.getSharedPreferences("com.example.recursoshumanos.PREFERENCE_FIL", Context.MODE_PRIVATE);
         //Comprobar si ya estabas logeado
-        if (sharedPref.getString("Email", "null") != null) {
-            showMain(sharedPref.getString("Email", "null"));
+        if (sharedPref.getString("Email", null) != null) {
+            showMain(sharedPref.getString("Email", null));
         }
 
         //Boton de login de google
@@ -73,6 +72,50 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Boton de Registrarse
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    SharedPreferences sharedPref = getSharedPreferences("com.example.recursoshumanos.PREFERENCE_FIL", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPref.edit();
+                                    editor.putString("Email", user.getEmail());
+                                    editor.commit();
+                                    showMain(user.getEmail());
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "ERROR: El usuario ya existe",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+        //Boton de Login
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    SharedPreferences sharedPref = getSharedPreferences("com.example.recursoshumanos.PREFERENCE_FIL", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPref.edit();
+                                    editor.putString("Email", user.getEmail());
+                                    editor.commit();
+                                    showMain(user.getEmail());
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "ERROR: Usuario o password incorrecto", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
     }
 
     @Override
@@ -91,7 +134,8 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()){
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                        SharedPreferences sharedPref = LoginActivity.this.getPreferences(Context.MODE_PRIVATE);
+                                       // SharedPreferences sharedPref = LoginActivity.this.getPreferences(Context.MODE_PRIVATE);
+                                        SharedPreferences sharedPref = getSharedPreferences("com.example.recursoshumanos.PREFERENCE_FIL", Context.MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPref.edit();
                                         editor.putString("Email", account.getEmail());
                                         editor.commit();
