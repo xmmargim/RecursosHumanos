@@ -3,16 +3,23 @@ package com.example.recursoshumanos;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -23,12 +30,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.BufferedInputStream;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -46,12 +57,31 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.fragmentPrueba)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        //Poner el nombre del usuario y la imagen
+        TextView tVNombre = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txtNombre);
+        TextView tvMail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txtEmail);
+        ImageView iVFotoPerfil = (ImageView) navigationView.getHeaderView(0).findViewById(R.id.imgPerfil);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            tVNombre.setText(user.getDisplayName());
+            tvMail.setText(user.getEmail());
+            Glide.with(this)
+                    .load(user.getPhotoUrl())
+                    .into(iVFotoPerfil);
+
+            boolean emailVerified = user.isEmailVerified();
+
+            String uid = user.getUid();
+        }
+
 
     }
 
@@ -80,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
