@@ -128,7 +128,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (account != null){
                     AuthCredential credencial = GoogleAuthProvider.getCredential(account.getIdToken(), null);
                     FirebaseAuth.getInstance().signInWithCredential(credencial).
-
                             addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
