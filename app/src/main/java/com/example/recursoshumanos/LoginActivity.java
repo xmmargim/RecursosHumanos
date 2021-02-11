@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
                         .requestIdToken(getString(R.string.default_web_client_id))
                         .requestEmail()
                         .build();
-
                 GoogleSignInClient googleClient = GoogleSignIn.getClient(getBaseContext(), googleConf);
                 googleClient.signOut();
                 startActivityForResult(googleClient.getSignInIntent(), 100);
@@ -156,6 +155,7 @@ public class LoginActivity extends AppCompatActivity {
     void showMain(String email) {
         Intent i = new Intent(LoginActivity.this, MainActivity.class);
         i.putExtra("email", email);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
         finish();
     }
