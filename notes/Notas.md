@@ -1,8 +1,10 @@
 ---
-title: Como impedir que se pueda volver al activity anterior
+title: Notas
 created: '2021-02-11T10:44:26.144Z'
-modified: '2021-02-11T10:54:01.396Z'
+modified: '2021-02-11T10:56:01.825Z'
 ---
+
+# Notas
 
 Como impedir que se pueda volver al activity anterior
 
