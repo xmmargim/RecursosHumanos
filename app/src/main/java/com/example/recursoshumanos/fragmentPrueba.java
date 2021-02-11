@@ -1,5 +1,6 @@
 package com.example.recursoshumanos;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -68,19 +69,24 @@ public class fragmentPrueba extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rvEmpleados = (RecyclerView) mview;
-        rvEmpleados.setLayoutManager(new LinearLayoutManager(getContext()));
+        View root = inflater.inflate(R.layout.fragment_prueba, container, false);
+        Context context = root.getContext();
+        rvEmpleados = (RecyclerView) root;
+        rvEmpleados.setLayoutManager(new LinearLayoutManager(context));
+
         miFirebase = FirebaseFirestore.getInstance();
 
         Query query = miFirebase.collection("empleados")
                 .orderBy("id_persona");
         FirestoreRecyclerOptions<Empleado> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Empleado>().setQuery(query, Empleado.class).build();
         adapter = new adapterPrueba(getActivity(), firestoreRecyclerOptions);
+        adapter.notifyDataSetChanged();
         rvEmpleados.setAdapter(adapter);
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_prueba, container, false);
+        //return inflater.inflate(R.layout.fragment_prueba, container, false);
+        return root;
 
     }
     @Override
