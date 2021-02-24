@@ -18,13 +18,18 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/fragmentSinUsar"
         android:name="com.example.recursoshumanos.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="fragmentCrearEmpleado"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/fragmentPrueba"
-        android:name="com.example.recursoshumanos.fragmentPrueba"
+        android:name="com.example.recursoshumanos.fragmentEmpleado"
         android:label="fragment_prueba"
-        tools:layout="@layout/fragment_prueba" />
+        tools:layout="@layout/fragment_empleado" />
+    <fragment
+        android:id="@+id/fragmentCrearEmpleado"
+        android:name="com.example.recursoshumanos.fragmentCrearEmpleado"
+        android:label="fragment_crear_empleado"
+        tools:layout="@layout/fragment_crear_empleado" />
 </navigation>

@@ -13,12 +13,16 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/fragmentSinUsar"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="Crear Empleado" />
         <item
             android:id="@+id/fragmentPrueba"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Prueba" />
+            android:title="Empleados" />
+        <item
+            android:id="@+id/fragmentCrearEmpleado"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Crear Empleado" />
     </group>
 </menu>

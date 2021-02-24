@@ -17,10 +17,10 @@ import com.google.firebase.firestore.Query;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragmentPrueba#newInstance} factory method to
+ * Use the {@link fragmentEmpleado#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragmentPrueba extends Fragment {
+public class fragmentEmpleado extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,14 +28,14 @@ public class fragmentPrueba extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     RecyclerView rvEmpleados;
     FirebaseFirestore miFirebase;
-    adapterPrueba adapter;
+    adapterEmpleado adapter;
     View mview;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public fragmentPrueba() {
+    public fragmentEmpleado() {
         // Required empty public constructor
     }
 
@@ -48,8 +48,8 @@ public class fragmentPrueba extends Fragment {
      * @return A new instance of fragment fragmentPrueba.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragmentPrueba newInstance(String param1, String param2) {
-        fragmentPrueba fragment = new fragmentPrueba();
+    public static fragmentEmpleado newInstance(String param1, String param2) {
+        fragmentEmpleado fragment = new fragmentEmpleado();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -69,17 +69,16 @@ public class fragmentPrueba extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_prueba, container, false);
+        View root = inflater.inflate(R.layout.fragment_empleado, container, false);
         Context context = root.getContext();
         rvEmpleados = (RecyclerView) root;
         rvEmpleados.setLayoutManager(new LinearLayoutManager(context));
 
         miFirebase = FirebaseFirestore.getInstance();
 
-        Query query = miFirebase.collection("empleados")
-                .orderBy("id_persona");
+        Query query = miFirebase.collection("empleados");
         FirestoreRecyclerOptions<Empleado> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Empleado>().setQuery(query, Empleado.class).build();
-        adapter = new adapterPrueba(getActivity(), firestoreRecyclerOptions);
+        adapter = new adapterEmpleado(getActivity(), firestoreRecyclerOptions);
         adapter.notifyDataSetChanged();
         rvEmpleados.setAdapter(adapter);
 
