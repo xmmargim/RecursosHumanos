@@ -85,4 +85,15 @@ public class fragmentVivienda extends Fragment {
 
         return root;
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
 }

@@ -32,4 +32,9 @@
         android:name="com.example.recursoshumanos.fragmentCrearEmpleado"
         android:label="fragment_crear_empleado"
         tools:layout="@layout/fragment_crear_empleado" />
+    <fragment
+        android:id="@+id/fragmentVivienda"
+        android:name="com.example.recursoshumanos.fragmentVivienda"
+        android:label="fragment_vivienda"
+        tools:layout="@layout/fragment_vivienda" />
 </navigation>

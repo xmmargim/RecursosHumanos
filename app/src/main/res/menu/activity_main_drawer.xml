@@ -24,5 +24,9 @@
             android:id="@+id/fragmentCrearEmpleado"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Crear Empleado" />
+        <item
+            android:id="@+id/fragmentVivienda"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Viviendas" />
     </group>
 </menu>
