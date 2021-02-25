@@ -25,18 +25,18 @@
     <fragment
         android:id="@+id/fragmentPrueba"
         android:name="com.example.recursoshumanos.fragmentEmpleado"
-        android:label="fragment_prueba"
+        android:label="Empleados"
         tools:layout="@layout/fragment_empleado" />
     <fragment
         android:id="@+id/fragmentCrearEmpleado"
         android:name="com.example.recursoshumanos.fragmentCrearEmpleado"
-        android:label="fragment_crear_empleado"
+        android:label="Crear Empleado"
         tools:layout="@layout/fragment_crear_empleado" />
     <fragment
         android:id="@+id/fragmentVivienda"
         android:name="com.example.recursoshumanos.fragmentVivienda"
-        android:label="fragment_vivienda"
-        tools:layout="@layout/fragment_vivienda" >
+        android:label="Vivienda"
+        tools:layout="@layout/fragment_vivienda">
         <action
             android:id="@+id/action_fragmentVivienda_to_fragmentAgregarEmpleado"
             app:destination="@id/fragmentAgregarEmpleado" />
@@ -44,8 +44,8 @@
     <fragment
         android:id="@+id/fragmentAgregarEmpleado"
         android:name="com.example.recursoshumanos.fragmentAgregarEmpleado"
-        android:label="fragment_agregar_empleado"
-        tools:layout="@layout/fragment_agregar_empleado" >
+        android:label="Agregar empleado"
+        tools:layout="@layout/fragment_agregar_empleado">
         <action
             android:id="@+id/action_fragmentAgregarEmpleado_to_fragmentVivienda"
             app:destination="@id/fragmentVivienda" />
