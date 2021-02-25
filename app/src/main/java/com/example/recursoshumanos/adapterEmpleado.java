@@ -50,7 +50,7 @@ public class adapterEmpleado extends FirestoreRecyclerAdapter<Empleado,
 
             mView = itemView;
             mNombre = (TextView) mView.findViewById(R.id.txtNombre);
-            mApellidos = (TextView) mView.findViewById(R.id.txtApellidos);
+            mApellidos = (TextView) mView.findViewById(R.id.txtResidente);
 
         }
     }
