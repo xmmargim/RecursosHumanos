@@ -29,29 +29,6 @@
         app:layout_constraintStart_toEndOf="@+id/txtCrearName"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtCrearSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:text="Apellidos: "
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCrearName" />
-
-    <EditText
-        android:id="@+id/editApellidos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Apellidos"
-        app:layout_constraintStart_toEndOf="@+id/txtCrearSurname"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/btnCrearVivienda"
         android:layout_width="wrap_content"
@@ -60,5 +37,5 @@
         android:layout_marginTop="13dp"
         android:text="Crear"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editApellidos" />
+        app:layout_constraintTop_toBottomOf="@+id/editNombre" />
 </androidx.constraintlayout.widget.ConstraintLayout>

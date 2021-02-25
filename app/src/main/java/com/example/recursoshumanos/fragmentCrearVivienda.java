@@ -22,23 +22,23 @@ import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragmentCrearEmpleado#newInstance} factory method to
+ * Use the {@link fragmentCrearVivienda#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragmentCrearEmpleado extends Fragment {
+public class fragmentCrearVivienda extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private FirebaseFirestore firebaseFirestore;
-    private Button btnAddEmpleado;
+    private Button btnAddVivienda;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    public fragmentCrearEmpleado() {
+    public fragmentCrearVivienda() {
         // Required empty public constructor
     }
 
@@ -48,11 +48,11 @@ public class fragmentCrearEmpleado extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragmentCrearEmpleado.
+     * @return A new instance of fragment crearVivienda.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragmentCrearEmpleado newInstance(String param1, String param2) {
-        fragmentCrearEmpleado fragment = new fragmentCrearEmpleado();
+    public static fragmentCrearVivienda newInstance(String param1, String param2) {
+        fragmentCrearVivienda fragment = new fragmentCrearVivienda();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,31 +74,29 @@ public class fragmentCrearEmpleado extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         firebaseFirestore = firebaseFirestore.getInstance();
-        final View root = inflater.inflate(R.layout.fragment_crear_empleado,container,false);
-        btnAddEmpleado = root.findViewById(R.id.btnCrearVivienda);
-        btnAddEmpleado.setOnClickListener(new View.OnClickListener() {
+        final View root = inflater.inflate(R.layout.fragment_crear_vivienda,container,false);
+        btnAddVivienda = root.findViewById(R.id.btnCrearVivienda);
+        btnAddVivienda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                crearJugador(root);
+                crearVivienda(root);
                 Toast.makeText(getContext(), "Se ha añadido correctamente", Toast.LENGTH_SHORT).show();
             }
         });
 
         return root;
-        //return inflater.inflate(R.layout.fragment_crear_empleado, container, false);
     }
-
-    public void crearJugador(View v) {
+    public void crearVivienda(View v) {
         TextView editNombre = v.findViewById(R.id.editNombre);
         String newNombre = editNombre.getText().toString();
+        String newResidente = "Agregar Residente";
 
-        TextView editApellidos = v.findViewById(R.id.editApellidos);
-        String newApellidos = editApellidos.getText().toString();
-        Map<String, Object> empleado = new HashMap<>();
-        empleado.put("nombre", newNombre);
-        empleado.put("apellidos",newApellidos);
-        firebaseFirestore.collection("empleados")
-                .add(empleado)
+        Map<String, Object> vivienda = new HashMap<>();
+        vivienda.put("nombre", newNombre);
+        vivienda.put("residente","Agregar Residente");
+
+        firebaseFirestore.collection("viviendas")
+                .add(vivienda)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -112,4 +110,5 @@ public class fragmentCrearEmpleado extends Fragment {
                     }
                 });
     }
+
 }

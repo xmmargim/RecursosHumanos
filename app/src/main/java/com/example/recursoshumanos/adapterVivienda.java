@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -17,8 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class adapterVivienda extends FirestoreRecyclerAdapter<Vivienda,
         adapterVivienda.ViewHolder> {
@@ -61,18 +65,38 @@ public class adapterVivienda extends FirestoreRecyclerAdapter<Vivienda,
                 navController.navigate(R.id.fragmentAgregarEmpleado, bundle);
             }
         });
+        holder.mBorrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseFirestore mFirebaseFireStore= FirebaseFirestore.getInstance();
+                DocumentSnapshot lugarDocument =
+                        getSnapshots().getSnapshot(holder.getAdapterPosition());
+                mFirebaseFireStore.collection("viviendas").document(lugarDocument.getId())
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(frAct, "Vivienda Borrada", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mNombre;
         public final TextView mResidente;
+        public final Button mBorrar;
         public ViewHolder(View itemView) {
             super(itemView);
 
             mView = itemView;
             mNombre = (TextView) mView.findViewById(R.id.txtNombre);
             mResidente = (TextView) mView.findViewById(R.id.txtResidente);
+            mBorrar = (Button) mView.findViewById(R.id.btnBorrarVivienda);
 
         }
     }

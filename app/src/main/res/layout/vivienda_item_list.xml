@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="140dp"
     android:background="#7EE4EF">
 
     <ImageView
@@ -58,5 +58,15 @@
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/txtEmpleado"
         app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+
+    <Button
+        android:id="@+id/btnBorrarVivienda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Borrar"
+        app:layout_constraintStart_toEndOf="@+id/imgHorizon"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmpleado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

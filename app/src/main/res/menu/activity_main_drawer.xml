@@ -20,5 +20,9 @@
             android:id="@+id/fragmentVivienda"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Viviendas" />
+        <item
+            android:id="@+id/fragmentCrearVivienda"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Crear Vivienda" />
     </group>
 </menu>

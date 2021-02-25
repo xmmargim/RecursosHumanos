@@ -50,4 +50,8 @@
             android:id="@+id/action_fragmentAgregarEmpleado_to_fragmentVivienda"
             app:destination="@id/fragmentVivienda" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentCrearVivienda"
+        android:name="com.example.recursoshumanos.fragmentCrearVivienda"
+        android:label="fragmentCrearVivienda" />
 </navigation>
